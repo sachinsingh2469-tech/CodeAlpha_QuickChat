@@ -22,15 +22,23 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(uploadDir));
 
-// Database connection
-const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'computer',
+// TiDB Database connection config
+const dbConfig = {
+  host: 'gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
+  port: 4000,
+  user: 'AGRYd3TeR87eEb6.root',
+  password: 'wnuvGtZreJ1SP7ha', // <-- Put your generated TiDB password here
   database: 'instagram_db',
+  ssl: {
+    minVersion: 'TLSv1.2',
+    rejectUnauthorized: true,
+  },
   waitForConnections: true,
   connectionLimit: 10
-});
+};
+
+// Database connection pool
+const pool = mysql.createPool(dbConfig);
 
 const demoPosts = [
   { username: 'mira_eats', fullname: 'Mira Kapoor', image: 'photo-1546069901-ba9599a7e63c', caption: 'A little color for lunch today. #food' },
@@ -304,9 +312,7 @@ app.use((err, req, res, next) => {
 
 async function start() {
   const schemaConnection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'computer',
+    ...dbConfig,
     multipleStatements: true
   });
 
@@ -318,7 +324,7 @@ async function start() {
   }
 
   await seedDemoPosts();
-  app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+  app.listen(port, () => console.log(`Server running on port ${port}`));
 }
 
 start().catch((err) => {
