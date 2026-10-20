@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quickchat</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Left Sidebar -->
+    <nav class="sidebar">
+      <div class="logo">Quickchat</div>
+      <ul class="nav-links">
+        <li class="active" data-view="feed"><span>🏠</span> Home</li>
+        <li data-view="search"><span>🔍</span> Search</li>
+        <li data-view="reels"><span>🎬</span> Reels</li>
+        <li data-view="notifications"><span>❤️</span> Notifications</li>
+        <li id="open-create-modal"><span>➕</span> Create</li>
+        <li data-view="profile"><span>👤</span> Profile</li>
+        <li id="logout-btn"><span>🚪</span> Log out</li>
+      </ul>
+    </nav>
+
+    <!-- Center Content -->
+    <main class="main-content">
+      <!-- FEED VIEW -->
+      <section id="view-feed" class="view-panel active">
+        <!-- Stories Row -->
+        <div class="stories-bar">
+          <div class="story"><div class="story-ring"><img id="story-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"></div><span>Your Story</span></div>
+                    <div class="story"><div class="story-ring"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100"></div><span>aarav_dev</span></div>
+                    <div class="story"><div class="story-ring"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100"></div><span>rohan_travels</span></div>
+                    <div class="story"><div class="story-ring"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"></div><span>priya_codes</span></div>
+        </div>
+
+        <!-- Post Stream -->
+        <div id="posts-stream" class="posts-stream"></div>
+      </section>
+
+      <!-- SEARCH VIEW -->
+      <section id="view-search" class="view-panel">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search accounts...">
+        </div>
+        <div id="search-results" class="user-list"></div>
+      </section>
+
+      <!-- REELS VIEW -->
+      <section id="view-reels" class="view-panel">
+        <div class="reels-container">
+          <div class="reel-card">
+            <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted></video>
+            <div class="reel-overlay">
+              <p><strong>@aarav_dev</strong> Exploring scenic routes #nature #vibes</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTIFICATIONS VIEW -->
+      <section id="view-notifications" class="view-panel">
+        <h2 class="view-title">Notifications</h2>
+        <div class="notification-item">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100" class="avatar-sm">
+          <p><strong>rohan_travels</strong> liked your photo. <span class="time">2h</span></p>
+        </div>
+        <div class="notification-item">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100" class="avatar-sm">
+          <p><strong>aarav_dev</strong> started following you. <span class="time">1d</span></p>
+        </div>
+      </section>
+
+      <!-- PROFILE VIEW -->
+      <section id="view-profile" class="view-panel">
+        <div class="profile-header">
+          <div class="profile-photo">
+            <img id="profile-avatar" src="" class="profile-img" alt="Profile photo">
+            <button type="button" id="change-photo-btn" class="btn-secondary change-photo-btn">📷 Change photo</button>
+                        <input type="file" id="avatar-file" accept="image/*" hidden>
+          </div>
+          <div class="profile-meta">
+            <h2 id="profile-username">username</h2>
+            <div class="profile-stats">
+              <span><strong id="stat-posts">0</strong> posts</span>
+              <span><strong id="stat-followers">0</strong> followers</span>
+              <span><strong id="stat-following">0</strong> following</span>
+            </div>
+            <p id="profile-fullname" class="profile-fullname">Full Name</p>
+            <p id="profile-bio" class="profile-bio">Bio</p>
+            <button type="button" id="edit-bio-btn" class="btn-secondary btn-small">✎ Edit bio</button>
+            <form id="bio-form" class="bio-form" hidden>
+              <textarea id="bio-input" maxlength="255" rows="3" placeholder="Write something about yourself..."></textarea>
+              <div class="bio-actions">
+                <button type="submit" class="btn-primary btn-small">Save</button>
+                <button type="button" id="cancel-bio-btn" class="btn-secondary btn-small">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="profile-grid" id="profile-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Create Post Modal -->
+  <div id="create-modal" class="modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Create new post</h3>
+        <button id="close-create-modal" class="icon-btn">✕</button>
+      </div>
+      <form id="create-post-form" class="modal-body">
+        <input type="file" id="post-image-file" accept="image/*" required>
+        <textarea id="post-caption" placeholder="Write a caption..." rows="3"></textarea>
+        <button type="submit" class="btn-primary">Share</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>

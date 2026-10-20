@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #0c0a09;
+  color: #fafafa;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+#crowd-canvas {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.auth-layout {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.auth-form-pane {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2.5rem;
+  border-radius: 24px;
+}
+
+.brand-title {
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.form-sub {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  margin-bottom: 0.35rem;
+}
+
+.glass-input {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus-within {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.glass-input input {
+  width: 100%;
+  padding: 0.8rem 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #a1a1aa;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider span {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #18181b;
+  padding: 0 10px;
+  color: #71717a;
+  font-size: 0.75rem;
+}
+
+.toggle-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.toggle-link a {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-hero-pane {
+  display: none;
+  flex: 1;
+  position: relative;
+  padding: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .auth-hero-pane { display: block; }
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+}
+
+.testimonial-container {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.testimonial-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  color: #fff;
+  max-width: 380px;
+}
+
+.testimonial-card img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.testimonial-card .handle {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+}
+
+.testimonial-card p {
+  font-size: 0.85rem;
+  color: #e4e4e7;
+  margin-top: 0.3rem;
+}
